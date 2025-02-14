@@ -4,7 +4,7 @@
 - 💞️ I’m looking to collaborate on tech companies which offer decent package 
 - 📫 How to reach me : Mail - rokhiyab5@gmail.com
 - 😄 Pronouns: she/her
-- ⚡ Fun fact: I am an hijabi  
+- ⚡ Fun fact: I am a hijabi  
 
 <!---
 rokhiya-hub/rokhiya-hub is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
