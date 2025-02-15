@@ -4,61 +4,56 @@
      BEST AND AVERAGE SPACE COMPLEXITY : O(logn)
     WORST SPACE COMPLEXITY IS : O(n)
 */
-// Function to partition the array into two subarrays
-int partition(int arr[], int low, int high) 
-{
-   // Taking the last element as the pivot
-    int pivot = arr[high];
-   // Index of the smaller element
-    int i = low - 1;
+#include <stdio.h>
 
-    for (int j = low; j < high; j++) 
-    {
-        if (arr[j] <= pivot)
-        {
-            i++;
-            // Swap arr[i] and arr[j]
-            int temp = arr[i];
-            arr[i] = arr[j];
-            arr[j] = temp;
+int partition(int a[], int start, int end) {
+    int pivot = a[start]; // Choosing pivot as the first element
+    int s = start + 1; 
+    int e = end;
+
+    while (s <= e) {
+        while (s <= e && a[s] <= pivot) {
+            s++;
+        }
+        while (s <= e && a[e] > pivot) {
+            e--;
+        }
+        if (s < e) {
+            int temp = a[s];
+            a[s] = a[e];
+            a[e] = temp;
         }
     }
 
-    // Swap the pivot element with arr[i+1] to place the pivot in the correct position
-    int temp = arr[i + 1];
-    arr[i + 1] = arr[high];
-    arr[high] = temp;
-     // Return the partition index
-    return i + 1;
+    // Swap pivot into its correct position
+    int temp = a[start];
+    a[start] = a[e];
+    a[e] = temp;
+
+    return e; // Return partition index
 }
 
-// Recursive function to implement Quick Sort
-void quickSort(int arr[], int low, int high) 
-{
-    if (low < high) 
-     {
-        // Partition the array and get the pivot index
-        int pivotIndex = partition(arr, low, high);
-
-        // Recursively sort the left and right subarrays
-        quickSort(arr, low, pivotIndex - 1);
-        quickSort(arr, pivotIndex + 1, high);
+void quicksort(int a[], int start, int end) {
+    if (start < end) {
+        int p = partition(a, start, end);
+        quicksort(a, start, p - 1);
+        quicksort(a, p + 1, end);
     }
 }
 
 int main() {
-    int arr[n];
-    for(int i=0;i<n;i++)
-    {
-       scanf("%d",&n);
+    int n;
+    scanf("%d", &n);
+    int a[n];
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &a[i]);
     }
-    // Call the quickSort function
-    quickSort(arr, 0, n - 1);  
 
-    printf("Sorted array: \n");
-    for (int i = 0; i < size; i++)
-    {
-        printf("%d ", arr[i]);
+    quicksort(a, 0, n - 1);
+
+    for (int i = 0; i < n; i++) {
+        printf("%d ", a[i]);
     }
+    
     return 0;
 }
